@@ -1,279 +1,334 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Abuela Eco — Detergente concentrado de origen natural</title>
-  <meta name="description" content="Detergente concentrado de origen natural. Biodegradable e hipoalergénico. Rinde más de 80 lavados. Hecho en pequeños lotes en Chile." />
-  <link rel="preload" href="web/img/01.jpg" as="image">
-  <link rel="preload" href="web/img/logo.png" as="image">
-  <style>
-    :root{
-      --mint:#A4DBF6;      /* verde menta pálido Original #B5D3B0, pasa a azul claro*/
-      --beige:#F8F7F3;     /* beige claro */
-      --off:#FFFFFA;       /* blanco hueso */
-      --gray:#706B63;      /* gris cálido */
-      --ink:#3b3b3b;       /* texto principal */
-      --accent:#A4DBF6;    /* mint muy claro Original #D8E7D5 pasa a azul aún más claro*/
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--off);color:var(--ink);font-family:"Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{width:min(1120px, 92%);margin-inline:auto}
-    /* Header */
-    header{position:sticky;top:0;z-index:40;background:rgba(255,255,250,.85);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eee}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0}
-    .brand{display:flex;gap:.6rem;align-items:center}
-    .brand img{width:40px;height:40px;border-radius:9px}
-    .brand strong{font-weight:800;letter-spacing:.2px}
-    nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
-    nav a{padding:.5rem .6rem;border-radius:10px}
-    nav a:hover{background:var(--accent)}
-    .btn{display:inline-block;background:var(--mint);color:#214; padding:.85rem 1.2rem;border-radius:14px;font-weight:800;box-shadow:0 4px 16px rgba(0,0,0,.06)}
-    .btn:hover{filter:brightness(.95)}
-    .btn-outline{background:transparent;border:2px solid var(--mint);}
-    /* Hero */
-    .hero{position:relative;min-height:72vh;display:grid;place-items:center;background:linear-gradient(180deg, rgba(248,247,243,.3), rgba(248,247,243,.8)), url('web/img/01.jpg') center/cover no-repeat}
-    .hero .content{padding:2.5rem 0;text-align:center}
-    .hero h1{font-size:clamp(1.8rem, 3vw + 1rem, 3rem);margin:.3rem 0 .6rem;font-weight:900}
-    .hero p{font-size:clamp(1rem, .9vw + .7rem, 1.2rem);opacity:.9;margin:0 auto 1rem;max-width:56ch}
-    .hero .cta{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:.6rem}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abuela Eco | Detergente Hipoalergénico</title>
+    <meta name="description" content="Detergente hipoalergénico ideal para bebés. Venta en bidones de 5 litros. Despacho exclusivo sector Metro El Golf.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Nunito para un toque suave y amigable -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    /* Sections */
-    section{padding:64px 0}
-    h2{font-size:clamp(1.5rem, 1.2vw + 1rem, 2rem);margin:0 0 1rem}
-    .muted{color:#6f6f6f}
-
-    /* Producto */
-    .product{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
-    .product .card{background:white;border:1px solid #eee;border-radius:18px;padding:22px;box-shadow:0 6px 40px rgba(0,0,0,.05)}
-    .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:12px}
-    .fact{display:flex;gap:.6rem;align-items:flex-start;background:var(--accent);padding:12px;border-radius:14px}
-    .fact svg{width:22px;height:22px;flex:0 0 22px}
-    .price{font-weight:900;font-size:1.6rem}
-
-    /* Icons row */
-    .icons{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:18px}
-    .icons .ico{background:white;border:1px solid #eee;border-radius:14px;padding:14px;text-align:center}
-    .icons svg{width:26px;height:26px;margin:0 auto 6px}
-
-    /* Historia */
-    .story{background:var(--beige);border-top:1px solid #eee;border-bottom:1px solid #eee}
-    .story .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
-    .story img{border-radius:18px;box-shadow:0 10px 40px rgba(0,0,0,.06)}
-    blockquote{background:white;border-left:6px solid var(--mint);margin:0;padding:18px 18px;border-radius:12px;font-size:1.05rem;line-height:1.6}
-
-    /* Por qué elegirnos */
-    .reasons{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .reason{background:white;border:1px solid #eee;padding:18px;border-radius:16px}
-
-    /* Testimonios */
-    .testi{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .quote{background:white;border:1px solid #eee;border-radius:16px;padding:18px}
-
-    /* Zona de entrega */
-    .delivery{background:linear-gradient(180deg, #fff, #f6faf5)}
-    .zone{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
-    .map{background:white;border:1px dashed var(--mint);border-radius:16px;min-height:260px;display:grid;place-items:center;color:#7a7a7a}
-
-    /* Contacto */
-    .contact .card{background:white;border:1px solid #eee;border-radius:16px;padding:22px}
-
-    /* Footer */
-    footer{padding:36px 0;border-top:1px solid #eee;color:#6a6a6a}
-
-    /* Responsive */
-    @media (max-width: 900px){
-      nav ul{display:none}
-      .product, .story .wrap, .reasons, .testi, .zone, .icons{grid-template-columns:1fr}
-      .hero{min-height:64vh}
-    }
-  </style>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+        .blob {
+            position: absolute;
+            filter: blur(40px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <a href="#top" class="brand">
-        <img src="web/img/logo.png" alt="Logo Abuela Eco" loading="lazy">
-        <strong> Abuela Eco</strong>
-      </a>
-      <nav aria-label="Principal">
-        <ul>
-          <li><a href="https://wa.me/56941281016?text=Hola,%20quiero%20comprar%20detergente%20Abuela%20Eco.%20%C2%BFMe%20cuentas%20qu%C3%A9%20formatos%20tienen%20y%20sus%20valores%20por%20favor%3F" target="_blank" rel="noopener" class="btn">Comprar</a></li>
-          <li><a href="#producto">Producto</a></li>
-          <li><a href="#historia">Historia</a></li>
-          <li><a href="#beneficios">Por qué elegirnos</a></li>
-          <li><a href="#zona">Zona de entrega</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<body class="bg-stone-50 text-stone-800 antialiased overflow-x-hidden">
 
-  <!-- Hero -->
-  <section class="hero" id="top" aria-label="Hero">
-    <div class="container content">
-      <h1 style="color:#00405C;">La limpieza de antes, con la conciencia de hoy.</h1>
-      <p>Detergente concentrado de origen natural, elaborado en pequeños lotes con ingredientes biodegradables e hipoalergénicos.</p>
-      <div class="cta">
-        <a class="btn" href="https://wa.me/56941281016?text=Hola,%20quiero%20comprar%20detergente%20Abuela%20Eco.%20%C2%BFMe%20cuentas%20qu%C3%A9%20formatos%20tienen%20y%20sus%20valores%20por%20favor%3F" target="_blank" rel="noopener">Comprar ahora — $9.900</a>
-        <a class="btn btn-outline" href="#producto" style="background:rgba(112,107,99,0.3);"> Conocer más </a>
-      </div>
-    </div>
-  </section>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i data-lucide="leaf" class="text-emerald-500 h-8 w-8 fill-emerald-100"></i>
+                    <span class="font-bold text-2xl text-stone-700 tracking-tight">Abuela<span class="text-emerald-600">Eco</span></span>
+                </div>
 
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#beneficios" class="text-stone-600 hover:text-emerald-600 font-semibold transition">Beneficios</a>
+                    <a href="#producto" class="text-stone-600 hover:text-emerald-600 font-semibold transition">Formato 5L</a>
+                    <a href="#zona" class="text-stone-600 hover:text-emerald-600 font-semibold transition">Zona de Entrega</a>
+                    <a href="https://wa.me/56941281016?text=Hola%2C%20quisiera%20pedir%20un%20bidón%20de%20Abuela%20Eco." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full font-bold transition shadow-lg hover:shadow-emerald-200 flex items-center gap-2">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i> Pedir ahora
+                    </a>
+                </div>
 
-  <!-- Producto -->
-  <section id="producto" class="container">
-    <div class="product">
-      <div>
-        <img src="web/img/04.png" alt="Bidón de 5 litros Abuela Eco" loading="lazy">
-      </div>
-      <div class="card">
-        <h2>Limpieza concentrada, cuidado natural</h2>
-        <p class="muted">5 Litros · Rinde más de 80 lavados · Aroma natural a limón</p>
-        <div class="facts">
-          <div class="fact">
-            <!-- leaf icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12c6-6 12-6 18 0-6 6-12 6-18 0Z"/><path d="M3 12c4 0 7 3 7 7"/></svg>
-            <div>
-              <strong>Biodegradable</strong><br><span class="muted">Fórmula amable con el agua.</span>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-stone-600 hover:text-emerald-600 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
             </div>
-          </div>
-          <div class="fact">
-            <!-- baby icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="6" r="2"/><path d="M4 20l4-6 3 3 3-3 6 6"/></svg>
-            <div>
-              <strong>Hipoalergénico</strong><br><span class="muted">Ideal para bebés y pieles sensibles.</span>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-100 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1 shadow-lg">
+                <a href="#beneficios" class="block px-3 py-3 rounded-md text-base font-medium text-stone-600 hover:text-emerald-600 hover:bg-emerald-50">Beneficios</a>
+                <a href="#producto" class="block px-3 py-3 rounded-md text-base font-medium text-stone-600 hover:text-emerald-600 hover:bg-emerald-50">El Bidón</a>
+                <a href="#zona" class="block px-3 py-3 rounded-md text-base font-medium text-stone-600 hover:text-emerald-600 hover:bg-emerald-50">Zona Reparto</a>
+                <a href="https://wa.me/56941281016?text=Hola%2C%20quisiera%20pedir%20un%20bidón%20de%20Abuela%20Eco." class="block mt-4 w-full text-center bg-emerald-500 text-white py-3 rounded-xl font-bold shadow-md">
+                    Pedir por WhatsApp
+                </a>
             </div>
-          </div>
-          <div class="fact">
-            <!-- drop icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2s7 8 7 12a7 7 0 0 1-14 0C5 10 12 2 12 2Z"/></svg>
-            <div>
-              <strong>Concentrado</strong><br><span class="muted">Menos cantidad, mejor rendimiento.</span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="blob bg-emerald-200 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="blob bg-yellow-100 w-80 h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Text Content -->
+                <div class="lg:w-1/2 text-center lg:text-left">
+                    <span class="inline-block py-1 px-3 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold mb-4 tracking-wide uppercase">
+                        🌿 Cuida a tu bebé y al planeta
+                    </span>
+                    <h1 class="text-4xl lg:text-6xl font-extrabold text-stone-800 leading-tight mb-6">
+                        Limpieza pura, <br>
+                        <span class="text-emerald-600">sin alergias.</span>
+                    </h1>
+                    <p class="text-lg text-stone-600 mb-8 leading-relaxed">
+                        El detergente hipoalergénico y biodegradable que estabas buscando. 
+                        Formato económico de 5 Litros, entregado directo en tu puerta.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="https://wa.me/56941281016?text=Hola%2C%20quiero%20encargar%20un%20bidón%20de%20Abuela%20Eco" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                            Comprar Bidón 5L
+                        </a>
+                        <a href="#zona" class="bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 px-8 py-4 rounded-full font-bold text-lg transition shadow-sm flex items-center justify-center gap-2">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-emerald-500"></i>
+                            Ver zona de reparto
+                        </a>
+                    </div>
+                    <p class="mt-4 text-sm text-stone-500">
+                        * Entrega exclusiva sector Metro El Golf
+                    </p>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="lg:w-1/2 relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition duration-500">
+                        <!-- Placeholder image for Baby/Clean Laundry -->
+                        <img 
+                            src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" 
+                            alt="Bebé feliz con ropa limpia" 
+                            class="w-full h-auto object-cover"
+                            onerror="this.src='https://placehold.co/600x400?text=Abuela+Eco+Baby'"
+                        >
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                            <p class="text-white font-bold text-lg">Suave con su piel, duro con las manchas.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -top-6 -right-6 bg-yellow-400 text-yellow-900 w-24 h-24 rounded-full flex items-center justify-center font-bold text-center shadow-lg animate-bounce transform rotate-12 border-4 border-white">
+                        Solo<br>5 Litros
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="fact">
-            <!-- lemon icon -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="12" rx="8" ry="5"/><path d="M4 12h16"/></svg>
-            <div>
-              <strong>Aroma natural a limón</strong><br><span class="muted">Fresco y sutil.</span>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="beneficios" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">¿Por qué elegir Abuela Eco?</h2>
+                <p class="text-stone-600">Formulado especialmente para pieles sensibles y comprometido con el medio ambiente.</p>
             </div>
-          </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-stone-50 p-8 rounded-2xl text-center hover:shadow-lg transition duration-300 border border-stone-100">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="smile" class="w-8 h-8 text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-3">Ideal para Bebés</h3>
+                    <p class="text-stone-600">Fórmula hipoalergénica libre de químicos agresivos. Dermatológicamente seguro para la ropa de tu recién nacido.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-stone-50 p-8 rounded-2xl text-center hover:shadow-lg transition duration-300 border border-stone-100">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="leaf" class="w-8 h-8 text-emerald-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-3">100% Biodegradable</h3>
+                    <p class="text-stone-600">Cuidamos el agua. Nuestros ingredientes se degradan naturalmente sin dejar residuos tóxicos en el ecosistema.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-stone-50 p-8 rounded-2xl text-center hover:shadow-lg transition duration-300 border border-stone-100">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="droplet" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-3">Formato Ahorro 5L</h3>
+                    <p class="text-stone-600">Venta exclusiva en bidones de 5 Litros. Menos plástico, más producto y mejor precio para tu familia.</p>
+                </div>
+            </div>
         </div>
-        <div class="icons">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12c6-6 12-6 18 0-6 6-12 6-18 0Z"/></svg><div>Biodegradable</div></div>
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="6" r="2"/><path d="M4 20l4-6 3 3 3-3 6 6"/></svg><div>Hipoalergénico</div></div>
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2s7 8 7 12a7 7 0 0 1-14 0C5 10 12 2 12 2Z"/></svg><div>+80 lavados</div></div>
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg><div>Pequeños lotes</div></div>
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 21s4-2 8 0c0 0 2-7-4-10-6 3-4 10-4 10Z"/></svg><div>Ciencia limpia</div></div>
+    </section>
+
+    <!-- Product Spotlight -->
+    <section id="producto" class="py-20 bg-emerald-900 text-white relative overflow-hidden">
+        <!-- Decorative background -->
+        <div class="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
+             <i data-lucide="sprout" class="w-96 h-96"></i>
         </div>
-        <p style="margin-top:16px">Modo de uso: agita suavemente antes de usar. Utiliza 1/4 de taza (60ml) por carga completa. Apto para lavadora y lavado a mano.</p>
-        <p class="price">$9.900</p>
-        <div class="cta"><a href="https://wa.me/56941281016?text=Hola,%20quiero%20comprar%20detergente%20Abuela%20Eco.%20%C2%BFMe%20cuentas%20qu%C3%A9%20formatos%20tienen%20y%20sus%20valores%20por%20favor%3F" target="_blank" rel="noopener" class="btn">Comprar ahora</a></div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Historia -->
-  <section id="historia" class="story">
-    <div class="container wrap">
-      <div>
-        <h2>Una historia que empezó en casa</h2>
-        <blockquote>
-          “En mis tiempos no existían esas cosas modernas, mijo. Con los niños chicos corriendo por la casa —y todos con la piel más delicada que pétalo de rosa— tuve que ingeniármelas para hacer mi propio detergente.
-          No era por moda ni por ecología; era porque no había otra forma de cuidar a los míos. Cada lavado era un acto de amor, aunque no lo dijera así.
-          Hoy me alegra ver que volvemos a lo simple: limpiar bien, sin dañar la piel ni la tierra. Este detergente tiene el mismo espíritu de entonces, con un poquito de ciencia, mucho cariño y ese toque de limón que huele a hogar.”
-          <br>— <strong>Abuela Carmen</strong>
-        </blockquote>
-      </div>
-      <div>
-        <img src="web/img/02.png" alt="Abuela Eco — inspiración familiar" loading="lazy">
-      </div>
-    </div>
-  </section>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12 bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20">
+                
+                <div class="md:w-1/2 flex justify-center">
+                  <!-- Product Image Representation -->
+                    <div class="relative group">
+                        <!-- AQUI: Reemplazamos el icono por tu foto real -->
+                        <!-- Asegúrate de cambiar el 'src' por la ruta de tu archivo o URL -->
+                        <img 
+                            src="img/01.png" 
+                            alt="Bidón de Detergente Abuela Eco 5 Litros" 
+                            class="w-64 h-80 object-cover rounded-2xl shadow-2xl transform group-hover:scale-105 transition duration-300 border-4 border-white/50"
+                        >
+                        
+                        <!-- Etiqueta flotante sobre la foto (Opcional, si quieres mantenerla) -->
+                        <div class="absolute bottom-4 right-4 bg-emerald-600 text-white py-1 px-3 rounded-full text-sm font-bold shadow-lg">
+                            5 LITROS
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Por qué elegirnos -->
-  <section id="beneficios" class="container">
-    <h2>¿Por qué elegirnos?</h2>
-    <div class="reasons">
-      <div class="reason"><strong>Amable con el planeta</strong><p class="muted">Fórmula biodegradable, sin fosfatos ni colorantes agresivos.</p></div>
-      <div class="reason"><strong>Cuidado real</strong><p class="muted">Hipoalergénico; pensado para bebés y pieles sensibles.</p></div>
-      <div class="reason"><strong>Rinde más</strong><p class="muted">Concentración superior: más lavados con menos producto.</p></div>
-      <div class="reason"><strong>Hecho en pequeños lotes</strong><p class="muted">Producción responsable con control de calidad.</p></div>
-    </div>
-  </section>
-
-  <!-- Testimonios -->
-  <section class="container">
-    <h2>Lo que dicen nuestros clientes</h2>
-    <div class="testi">
-      <div class="quote">“Mi guagua no volvió a tener irritaciones. Aroma suave, limpieza real.”<br><small>— Camila, Las Condes</small></div>
-      <div class="quote">“Huele a limpio sin ser fuerte. Me dura muchísimo.”<br><small>— José, Vitacura</small></div>
-    </div>
-  </section>
-
-  <!-- Compra directa -->
-  <section id="compra" class="story">
-    <div class="container wrap">
-      <div>
-        <img src="web/img/03.png" alt="Producto Abuela Eco 5L" loading="lazy">
-      </div>
-      <div>
-        <h2>Abuela Eco — Detergente concentrado de origen natural</h2>
-        <p class="muted">5 Litros · Rinde más de 80 lavados · $9.900</p>
-        <p>Compra directamente en nuestra web y recibe en tu hogar.</p>
-        <div class="cta" style="justify-content:flex-start;gap:.6rem">
-          <a class="btn btn-outline" href="https://wa.me/56941281016?text=Hola,%20quiero%20comprar%20detergente%20Abuela%20Eco.%20%C2%BFMe%20cuentas%20qu%C3%A9%20formatos%20tienen%20y%20sus%20valores%20por%20favor%3F" target="_blank" rel="noopener">Dudas por WhatsApp</a>
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">El Formato Perfecto</h2>
+                    <p class="text-emerald-100 text-lg mb-6">
+                        Olvídate de comprar detergente todas las semanas. Con nuestro bidón de 5 litros tienes rendimiento superior para meses de lavado, reduciendo el consumo de botellas plásticas pequeñas.
+                    </p>
+                    <ul class="space-y-3 mb-8 text-left inline-block">
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="text-emerald-400 w-6 h-6"></i>
+                            <span>Rinde hasta 80 lavados</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="text-emerald-400 w-6 h-6"></i>
+                            <span>Envase reutilizable (retornable)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="text-emerald-400 w-6 h-6"></i>
+                            <span>Precio justo sin intermediarios</span>
+                        </li>
+                    </ul>
+                    
+                    <div>
+                        <a href="https://wa.me/56941281016?text=Hola%2C%20quiero%20saber%20el%20precio%20y%20pedir%20un%20bidón." target="_blank" class="inline-flex items-center gap-2 bg-white text-emerald-900 hover:bg-emerald-50 px-8 py-4 rounded-full font-bold text-lg transition shadow-lg">
+                            <i data-lucide="whatsapp" class="w-5 h-5"></i>
+                            Consultar Precio y Pedir
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Zona de entrega -->
-  <section id="zona" class="delivery">
-    <div class="container zone">
-      <div>
-        <h2>Entregas locales con cariño</h2>
-        <p>Por ahora entregamos personalmente en los sectores cercanos a nuestro taller entre <strong>Las Condes y Providencia</strong>. Si estás dentro del área, llevamos tu bidón sin costo adicional.</p>
-        <ul class="muted">
-          <li>Ventana de entrega coordinada por WhatsApp.</li>
-          <li>Pago seguro por WebPay / Flow / Transferencia.</li>
-          <li>Si estás fuera del área, consúltanos por opciones.</li>
-        </ul>
-        <div class="cta" style="gap:.6rem;justify-content:flex-start">
-          <a class="btn" href="https://wa.me/56941281016?text=Hola,%20quiero%20comprar%20detergente%20Abuela%20Eco.%20%C2%BFMe%20cuentas%20qu%C3%A9%20formatos%20tienen%20y%20sus%20valores%20por%20favor%3F" target="_blank" rel="noopener">Comprar</a>
+    <!-- Delivery Zone (Restricción) -->
+    <section id="zona" class="py-20 bg-stone-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-emerald-600 font-bold tracking-wider uppercase text-sm">Logística Local</span>
+                <h2 class="text-3xl font-bold text-stone-800 mt-2">Zona Exclusiva de Reparto</h2>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-xl border-l-8 border-emerald-500 flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/3 flex justify-center">
+                    <div class="bg-emerald-100 w-40 h-40 rounded-full flex items-center justify-center animate-pulse">
+                        <i data-lucide="map" class="w-20 h-20 text-emerald-600"></i>
+                    </div>
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h3 class="text-2xl font-bold text-stone-800 mb-4">Sector Metro El Golf</h3>
+                    <p class="text-stone-600 mb-6 text-lg">
+                        Para mantener nuestra huella de carbono baja y asegurar entregas rápidas y gratuitas, <strong>solo realizamos despachos en el radio cercano al Metro El Golf, Las Condes.</strong>
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                        <div class="flex items-center gap-2 bg-stone-100 px-4 py-2 rounded-lg text-sm font-semibold text-stone-600">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            Barrio El Golf
+                        </div>
+                        <div class="flex items-center gap-2 bg-stone-100 px-4 py-2 rounded-lg text-sm font-semibold text-stone-600">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            Isidora Goyenechea
+                        </div>
+                        <div class="flex items-center gap-2 bg-stone-100 px-4 py-2 rounded-lg text-sm font-semibold text-stone-600">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            Pdte. Riesco
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <p class="text-sm text-yellow-800 flex items-start gap-2">
+                            <i data-lucide="alert-circle" class="w-5 h-5 flex-shrink-0"></i>
+                            Si eres de otra comuna, contáctanos para evaluar disponibilidad, pero nuestro foco es vecinal.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="map" aria-label="Mapa de zona de entrega">
-        <div>
-          <strong>Mapa / zona de cobertura</strong>
-          <p class="muted" style="margin:.4rem 0 0"><img src="web/img/mapa.png" loading="lazy" />
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center gap-2 mb-4 justify-center md:justify-start">
+                        <i data-lucide="leaf" class="text-emerald-500 h-6 w-6"></i>
+                        <span class="font-bold text-xl text-white">Abuela<span class="text-emerald-500">Eco</span></span>
+                    </div>
+                    <p class="text-sm text-center md:text-left max-w-xs">
+                        Limpieza consciente para el hogar moderno. Hipoalergénico, biodegradable y económico.
+                    </p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <h4 class="text-white font-bold mb-4">Contacto</h4>
+                    <a href="https://wa.me/56941281016" target="_blank" class="inline-flex items-center gap-2 hover:text-emerald-400 transition">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i> +56 9 4128 1016
+                    </a>
+                    <p class="text-sm mt-2">Metro El Golf, Las Condes, Santiago</p>
+                </div>
+            </div>
+            <div class="border-t border-stone-800 mt-8 pt-8 text-center text-xs">
+                &copy; 2021 Abuela Eco. Todos los derechos reservados.
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Contacto -->
-  <section id="contacto" class="container contact">
-    <div class="card">
-      <h2>Contacto</h2>
-      <p class="muted">¿Tienes dudas? Te ayudamos con cariño, como lo haría una abuela.</p>
-      <p><strong>Correo:</strong> <a href="mailto:hola@abuelaeco.cl">hola@abuelaeco.cl</a></p>
-      <p><strong>WhatsApp:</strong> <a href="https://wa.me/56941281016?text=Hola,%20quiero%20comprar%20detergente%20Abuela%20Eco.%20%C2%BFMe%20cuentas%20qu%C3%A9%20formatos%20tienen%20y%20sus%20valores%20por%20favor%3F" target="_blank" rel="noopener">+56941281016 👵💬</a></p>
-    </div>
-  </section>
+    <!-- Sticky WhatsApp Button Mobile -->
+    <a href="https://wa.me/56941281016?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl z-50 md:hidden transition transform hover:scale-110 border-2 border-white">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </a>
 
-  <footer>
-    <div class="container">
-      © 2025 Abuela Eco · Hecho en Chile · Producto biodegradable
-    </div>
-  </footer>
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // Mobile Menu Toggle logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = menu.querySelectorAll('a');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú al hacer click en un link
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-
